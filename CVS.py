@@ -101,47 +101,7 @@ class HandDetector:
                 else:
                     fingers.append(0)
         return fingers
-
-class ExpressionDetector:
-    classes=5 #Classes being the amount of emotions we want to be dealing with in this program
-    img_rows, img_cols=48,48 #Defining the array for the CNN
-    batch_size=32 #Number of sample times before model is better.
-    
-    #For this model im going to use fer2013 is an open source database for expressions. full of 3.5K images. 
-    train_data_dir = 'datasets/fer2013/train'
-    validation_data_dir = 'datasets/fer2013/validation'
-
-    #The following function is going to be using Image Automation Techniques using Keras.
-    train_datagen = ImageDataGenerator(
-       rescale=1./255,
-       rotation_range=30, #in degress of random roations.
-       shear_range=0.3, #shear data transforming value low at @0.3 range
-       zoom_range=0.3, #range for random zoom 
-       width_shift_range=0.4,
-       height_shift_range=0.4,
-       horizontal_flip=True,
-       fill_mode='nearest'
-    )
-    validation_datagen = ImageDataGenerator(rescale=1./255)
-    
-    train_generator = train_datagen.flow_from_directory(
-        train_data_dir, #Where to look
-        color_mode='grayscale', #which colormode, the data itself is grayscale value
-        target_size=(img_rows, img_cols), #using the array size for target
-        batch_size=batch_size,
-        class_mode='categorical',
-        shuffle=True)
-    validation_generator = validation_datagen.flow_from_directory(
-        validation_data_dir,
-        color_mode='grayscale',
-        target_size=(img_rows,img_cols),
-        batch_size=batch_size,
-        class_mode='categorical',
-        shuffle=True
-    )
-
-    model = Sequential()
-    
+   
 def main():
     cap = cv2.VideoCapture(0)
     detector = HandDetector(detectionCon=0.8, maxHands=2)
