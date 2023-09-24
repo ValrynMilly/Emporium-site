@@ -80,9 +80,9 @@ print(num_test_imgs)
 epochs=30
 
 history=model.fit(train_generator,
-                        steps_per_epoch=num_train_imgs//32,
-                        epochs=epochs,
+                        steps_per_epoch=28500//32,
+                        epochs=30,
                         validation_data=validation_generator,
                         validation_steps=num_test_imgs//32)
 
-model.save('model_file.h5')
+model.save('model_file.keras')
