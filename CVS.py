@@ -1,23 +1,8 @@
 import cv2
 import mediapipe as mp
-import math
 import keyboard
-import keras
-from keras.preprocessing.image import ImageDataGenerator
-from keras.models import Sequential
-from keras.layers import Dense,Dropout,Activation,Flatten,BatchNormalization
-from keras.layers import Conv2D,MaxPooling2D
 from keras.models import load_model
 import numpy as np
-import os
-
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-
-model = load_model('model_file.keras')
-
-faceDetect=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-labels_dict={0:'Angry', 1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Suprise'}
 
 
 class HandDetector:
@@ -56,7 +41,7 @@ class HandDetector:
                     xList.append(px)
                     yList.append(py)
 
-                ## bbox
+                ## box
                 xmin, xmax = min(xList), max(xList)
                 ymin, ymax = min(yList), max(yList)
                 boxW, boxH = xmax - xmin, ymax - ymin
@@ -81,8 +66,8 @@ class HandDetector:
                 if draw:
                     self.mpDraw.draw_landmarks(img, handLms,
                                                self.mpHands.HAND_CONNECTIONS)
-                    cv2.putText(img, myHand["type"], (bbox[0] - 10, bbox[1] - 10), cv2.FONT_HERSHEY_SCRIPT_SIMPLEX,
-                                1, (255, 0, 255), 2)
+                    cv2.putText(img, myHand["type"], (bbox[0] - 10, bbox[1] - 10), cv2.FONT_HERSHEY_SIMPLEX,
+                                0.8, (255, 255, 255), 1)
         if draw:
             return allHands, img
         else:
@@ -114,6 +99,9 @@ class HandDetector:
         return fingers
 
 def main():
+    model = load_model('model_file.keras')
+    faceDetect=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+    labels_dict={0:'Angry', 1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Suprise'}
     cap = cv2.VideoCapture(0)
     detector = HandDetector(detectionCon=0.8, maxHands=2)
     
@@ -135,11 +123,11 @@ def main():
             result=model.predict(reshaped)
             label=np.argmax(result, axis=1)[0]
     
-            print(label)
-            #cv2.rectangle(img, (x,y), (x+w, y+h), (0,0,255), 1)
-            #cv2.rectangle(img, (x,y), (x+w, y+h), (50,50,255), 2)
-            #cv2.rectangle(img, (x,y -40), (x+w, y), (50,50,255), -1)
-            cv2.putText(img, labels_dict[label], (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
+            print(label) #Current Emotion
+            #Draw rectangle around head
+            cv2.rectangle(img, (x,y), (x+w, y+h), (255,255,255), 1)
+            cv2.rectangle(img, (x,y -40), (x+w, y), (50,50,255), -1)
+            cv2.putText(img, labels_dict[label], (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 1)
 
         if hands:
             # Hand 1
@@ -172,4 +160,3 @@ if __name__ == "__main__":
     main()
     if keyboard.is_pressed('q'):
         cv2.destroyAllWindows()
-    
