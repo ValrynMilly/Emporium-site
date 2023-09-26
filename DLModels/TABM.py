@@ -23,7 +23,7 @@ train_generator = train_datagen.flow_from_directory(
     train_data_dir,
     color_mode='grayscale',
     target_size=(48, 48),
-    batch_size=32,
+    batch_size=256,
     class_mode='categorical',
     shuffle=True
 )
@@ -77,11 +77,11 @@ for root, dir, files in os.walk(test_path):
 
 print(num_train_imgs)
 print(num_test_imgs)
-epochs=30
+epochs=100
 
 history=model.fit(train_generator,
-                        steps_per_epoch=28500//32,
-                        epochs=30,
+                        steps_per_epoch=28500//256,
+                        epochs=epochs,
                         validation_data=validation_generator,
                         validation_steps=num_test_imgs//32)
 

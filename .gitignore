@@ -161,3 +161,4 @@ cython_debug/
 #.idea/
 __pycache__/app.cpython-311.pyc
 *.pyc
+.vscode/settings.json
