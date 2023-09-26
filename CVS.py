@@ -3,7 +3,10 @@ import mediapipe as mp
 import keyboard
 from keras.models import load_model
 import numpy as np
+from playsound import playsound
 
+def playwow():
+    playsound('Multimedia\wow.mp3')
 
 class HandDetector:
     def __init__(self, mode=False, maxHands=2, detectionCon=0.5, minTrackCon=0.5):
@@ -104,7 +107,7 @@ def main():
     labels_dict={0:'Angry', 1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Suprise'}
     cap = cv2.VideoCapture(0)
     detector = HandDetector(detectionCon=0.8, maxHands=2)
-    
+    run_once = 0
     while True:
         # Get image frame
         success, img = cap.read()
@@ -128,6 +131,12 @@ def main():
             cv2.rectangle(img, (x,y), (x+w, y+h), (255,255,255), 1)
             cv2.rectangle(img, (x,y -40), (x+w, y), (50,50,255), -1)
             cv2.putText(img, labels_dict[label], (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 1)
+
+            ####This works but crashes the video stream. 
+            if run_once == 0 and label==3: 
+                playwow()
+                run_once=1
+
 
         if hands:
             # Hand 1
@@ -158,5 +167,13 @@ def main():
 
 if __name__ == "__main__":
     main()
+
     if keyboard.is_pressed('q'):
         cv2.destroyAllWindows()
+
+
+
+
+
+
+
