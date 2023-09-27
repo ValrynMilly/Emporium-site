@@ -1,12 +1,16 @@
+#Getting the packages
 import cv2
 import mediapipe as mp
 import keyboard
 from keras.models import load_model
 import numpy as np
+import multiprocessing
 from playsound import playsound
 
 def playwow():
-    playsound('Multimedia\wow.mp3')
+    playsound('Multimedia\wow.wav')
+
+soundtrigger = 0
 
 class HandDetector:
     def __init__(self, mode=False, maxHands=2, detectionCon=0.5, minTrackCon=0.5):
@@ -131,11 +135,12 @@ def main():
             cv2.rectangle(img, (x,y), (x+w, y+h), (255,255,255), 1)
             cv2.rectangle(img, (x,y -40), (x+w, y), (50,50,255), -1)
             cv2.putText(img, labels_dict[label], (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 1)
-
-            ####This works but crashes the video stream. 
-            if run_once == 0 and label==3: 
+            soundtrigger=label
+            if run_once == 0 and soundtrigger==3: 
                 playwow()
-                run_once=1
+                
+        
+
 
 
         if hands:
@@ -164,6 +169,10 @@ def main():
         if keyboard.is_pressed('q'):
             cv2.destroyAllWindows()
             break          
+    
+    
+
+    ####This works but crashes the video stream. 
 
 if __name__ == "__main__":
     main()
