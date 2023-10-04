@@ -4,7 +4,6 @@ import mediapipe as mp
 import keyboard
 from keras.models import load_model
 import numpy as np
-import multiprocessing
 from playsound import playsound
 
 def playwow():
@@ -106,10 +105,10 @@ class HandDetector:
         return fingers
 
 def main():
-    model = load_model('model_file.keras')
-    faceDetect=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
-    labels_dict={0:'Angry', 1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Suprise'}
-    cap = cv2.VideoCapture(0)
+    model = load_model('model_file.keras') #Loading the trained model
+    faceDetect=cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml') #Setting Classifier
+    labels_dict={0:'Angry', 1:'Disgust', 2:'Fear', 3:'Happy', 4:'Neutral', 5:'Sad', 6:'Suprise'} #Setting dictionary for use of emotion identification
+    cap = cv2.VideoCapture(0) #Capture object
     detector = HandDetector(detectionCon=0.8, maxHands=2)
     run_once = 0
     while True:
@@ -119,12 +118,12 @@ def main():
         hands, img = detector.findHands(img)  # with draw
         # hands = detector.findHands(img, draw=False)  # without draw
 
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)#Converting to gray
         faces= faceDetect.detectMultiScale(gray, 1.3, 3)
     
         for x,y,w,h in faces:
-            sub_face_img=gray[y:y+h, x:x+w]
-            resized=cv2.resize(sub_face_img, (48, 48))
+            sub_face_img=gray[y:y+h, x:x+w] #First layer matrix dimentions
+            resized=cv2.resize(sub_face_img, (48, 48)) #Resizing to match dataset
             normalize = resized/255.0
             reshaped = np.reshape(normalize, (1, 48, 48, 1))
             result=model.predict(reshaped)
@@ -135,13 +134,6 @@ def main():
             cv2.rectangle(img, (x,y), (x+w, y+h), (255,255,255), 1)
             cv2.rectangle(img, (x,y -40), (x+w, y), (50,50,255), -1)
             cv2.putText(img, labels_dict[label], (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 1)
-            soundtrigger=label
-            if run_once == 0 and soundtrigger==3: 
-                playwow()
-                
-        
-
-
 
         if hands:
             # Hand 1
