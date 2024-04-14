@@ -63,7 +63,24 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero is-white is-fullheight">
+  <section class="hero is-white is-fullheight has-background">
+    <style>
+    .hero.has-background {
+    position: relative;
+    overflow: hidden;
+    }
+    .hero-background {
+      position: absolute;
+      object-fit: cover;
+      object-position: center center;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-background.is-transparent {
+      opacity: 0.45;
+    }  
+    </style>
+    <img alt="Mountain" class="hero-background is-transparent" src="https://i.ibb.co/99zF8F6/3f3be93d-a564-4685-a1f9-948845aec1ad.webp" />
     <div class="hero-body">
       <div class="container">
         <div class="columns  is-vcentered reverse-columns">
@@ -95,15 +112,6 @@
               Projects include: <span id="typewriter"></span>
             </h2>
           </div>
-          <div data-aos="*r" class="column is-hcentered
-          is-10-mobile 
-          is-10-tablet 
-          is-7-widescreen 
-          is-4-fullhd">
-            <figure class="image is-square is-right">
-              <img src="https://ca.slack-edge.com/E020J2JQ67P-U02EXNG101L-1c17558070dc-512">
-            </figure>
-          </div>
 
         </div>
       </div>
@@ -111,7 +119,7 @@
   </section>
 
 
-  <section class="hero is-white is-fullheight">
+  <section class="hero is-white is-halfheight">
     <div class="hero-body">
       <div class="container">
         <div class="columns  is-vcentered">
@@ -121,8 +129,8 @@
           is-4-desktop is-offset-1-desktop
           is-4-widescreen is-offset-1-widescreen
           is-4-fullhd is-offset-1-fullhd">
-            <figure class="image is-square">
-              <img src="templates\images\CVSSHOW.png">
+            <figure class="is-fullheight">
+              <img src="https://i.ibb.co/86Dst9s/Emotions.webp">
             </figure>
           </div>
           <div data-aos="fade-down" class="column
@@ -135,19 +143,22 @@
               Computer Vision Series
             </h1>
             <h3 class="subtitled subtitle">
-              Computer vision empowers machines to see, interpret, and understand the visual world, offering endless potential for enhancing security, healthcare, automation, and innovation across industries. The following program is a Face, Emotions and Hands tracker. Face & Emotions tracker was done using the FER 2013 Database and built with Tensorflow & Keras. I then added Google's MediaPipe for hand tracking. The model is 74% accurate & this was the most vision tasks I could fit in this cloud instance without breaking the bank.
+              Computer vision empowers machines to see, interpret, and understand the visual world, offering endless potential for enhancing security, healthcare, automation, etc... The following program is a Face, Emotions and Hands tracker. Face & Emotions tracker was done using the FER 2013 Database and built with Tensorflow & Keras. I then added Google's MediaPipe for hand tracking.
             </h3>
-              <br>
-              <form action="/video_feed" method="POST">
-                <button class="button is-info" name="VisionButton" type="submit">Try me</button>
-            </form>
 
+              <form action="/video_feed" method="POST">
+                <button class="button is-info is-large" name="VisionButton" type="submit">Try this</button>
+            </form>
+            <a>
+              Please allow access to webcam & a small window will open, press Q on keyboard to quit.
+              This runs off an instance in the cloud so please dont worry as its all contained.
+            </a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="hero is-white is-fullheight">
+  <section class="hero is-white is-halfheight">
     <div class="hero-body">
       <div class="container">
         <div class="columns  is-vcentered reverse-columns">
@@ -160,9 +171,8 @@
             <h1 class="title titled is-1 mb-6">
               Web Development Frameworks
             </h1>
-            <h2 class="subtitle subtitled">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum cupiditate dolorum vitae dolores
-              nesciunt totam magni quas.
+            <h2 class="subtitle subtitled">  
+            Web development frameworks are essential tools that empower developers to create robust and efficient web applications. They provide a structured approach to building websites by offering pre-built components, libraries, and best practices. I can bring that to you.
             </h2>
           </div>
           <div data-aos="fade-down" class="column
@@ -172,7 +182,7 @@
           is-4-widescreen is-offset-1-widescreen
           is-4-fullhd is-offset-1-fullhd" data-aos="fade-up">
             <figure class="image is-square">
-              <img src="../images/undraw_Camera_re_cnp4.svg">
+              <img src="https://i.ibb.co/t3QpYQt/Applications.webp">
             </figure>
           </div>
 
