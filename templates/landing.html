@@ -50,9 +50,26 @@
           ABOUT ME
         </a>
 
-        <a class="navbar-item">
-          MY WORK
-        </a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            MY WORK
+          </a>
+  
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              AI & ML
+            </a>
+            <a class="navbar-item is-selected">
+              Web Dev / DevOps
+            </a>
+            <a class="navbar-item">
+              Automation
+            </a>
+            <a class="navbar-item">
+              Testing
+            </a>
+          </div>
+        </div>
 
         <a class="navbar-item">
           CONTACT ME
@@ -140,18 +157,18 @@
           is-5-widescreen is-offset-1-widescreen
           is-5-fullhd is-offset-1-fullhd">
             <h1 class="titled title is-1 mb-6">
-              Computer Vision Series
+              Computer Vision Series - AI, ML
             </h1>
             <h3 class="subtitled subtitle">
               Computer vision empowers machines to see, interpret, and understand the visual world, offering endless potential for enhancing security, healthcare, automation, etc... The following program is a Face, Emotions and Hands tracker. Face & Emotions tracker was done using the FER 2013 Database and built with Tensorflow & Keras. I then added Google's MediaPipe for hand tracking.
             </h3>
 
-              <form action="/video_feed" method="POST">
+            <form action="/video_feed" method="POST">
                 <button class="button is-info is-large" name="VisionButton" type="submit">Try this</button>
             </form>
             <a>
               Please allow access to webcam & a small window will open, press Q on keyboard to quit.
-              This runs off an instance in the cloud so please dont worry as its all contained.
+              This runs off an instance in the cloud so please dont worry as its all contained. If it does not work for whatever reason you can see it in action here on youtube.
             </a>
         </div>
       </div>
