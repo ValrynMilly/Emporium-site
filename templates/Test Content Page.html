@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container" id="x">
+      <div class="tile">
+        <button class="button is-large is-danger" v-on:click="close()">Click Here, Am i Toggled? {{toggled}}</button>
+      </div>
+      <transition name="fade">
+        <div v-if="toggled == true">
+
+          <div class="modal is-active">
+            <div class="modal-background"></div>
+            <div class="modal-content">
+              <div class="card">
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-64x64">
+                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                      </figure>
+                    </div>
+                    <div class="media-content">
+
+                      <p class="title is-4">Snonald Snump</p>
+                      <p class="subtitle is-6">@ssnump</p>
+                    </div>
+                    <button class="button is-rounded is-danger is-outlined" aria-label="close" v-on:click="close"><i class="material-icons">
+close
+                      </i></button>
+                  </div>
+                  <div class="content">
+                    I don’t need anybody’s finance. It’s nice. I don’t need anybody’s finance. I’m using my own finance. I’m not using the lobbyists. I’m not using donors. I don’t care. I’m really greasy, I’ll show you that in a second. And by the way, I’m not even saying
+                    that in a braggadocios … that’s the kind of thinking you need for this country.
+                    <a href="#">#MCSSGA</a> <a href="#">#unresponsive</a>
+                    <br>
+                    <time>{{date}}</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </transition>
+    </div>
+
+  </section>
+
+</body>
+
+</html>

@@ -31,6 +31,119 @@
       font-weight: 400 !important;
       line-height: 36px !important;
     }
+
+   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Merriweather', serif;
+        }
+        body {
+            display: relative;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #ffffff;
+        }
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 100px 20px;
+            padding: 100px 50px;
+        }
+        .container .custom-card {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 350px;
+            max-width: 100%;
+            height: 300px;
+            background: #FFF;
+            border-radius: 20px;
+            transition: 0.5s;
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.15);
+        }
+        .container .custom-card:hover {
+            height: 400px;
+        }
+        .container .custom-card .img-box {
+            position: absolute;
+            top: 20px;
+            width: 300px;
+            height: 220px;
+            background: #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .container .custom-card:hover .img-box {
+            top: -100px;
+            scale: 0.75;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+        }
+        .container .custom-card .img-box img {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .container .custom-card .custom-content {
+            position: absolute;
+            top: 252px;
+            width: 100%;
+            height: 35px;
+            padding: 0 30px;
+            text-align: center;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+        .container .custom-card:hover .custom-content {
+            top: 130px;
+            height: 250px;
+        }
+        .container .custom-card .custom-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333333;
+        }
+        .container .custom-card .custom-content p {
+            color: #333;
+        }
+        .container .custom-card .custom-content a {
+            position: relative;
+            top: 15px;
+            display: inline-block;
+            padding: 12px 25px;
+            text-decoration: none;
+            background: #d6d6d6;
+            color: #fff;
+            font-weight: 500;
+        }
+        .container .custom-card .custom-content a:hover {
+            opacity: 0.8;
+        }
+        @media (max-width: 480px) {
+            .container .custom-card {
+                width: 230px;
+                border-radius: 15px;
+            }
+            .container .custom-card .img-box {
+                width: 185px;
+                border-radius: 10px;
+            }
+            .container .custom-card .custom-content p {
+                font-size: 0.8rem;
+            }
+            .container .custom-card .custom-content a {
+                font-size: 0.9rem;
+            }
+        }
   </style>
 </head>
 
@@ -166,10 +279,45 @@
             <form action="/video_feed" method="POST">
                 <button class="button is-info is-large" name="VisionButton" type="submit">Try this</button>
             </form>
+            <br>
             <a>
-              Please allow access to webcam & a small window will open, press Q on keyboard to quit.
-              This runs off an instance in the cloud so please dont worry as its all contained. If it does not work for whatever reason you can see it in action here on youtube.
+              Please allow access to webcam & a small window will open, press Q on keyboard to quit once done.
+              If it does not work you can see it in action here on youtube.
             </a>
+        </div>
+      </div>
+      <h1 class="subtitled subtitle">Below are some other AI projects & tools I have worked on. Click them to learn more or try.</h1>
+    </div>
+  </section>
+  
+  <section class="hero is-white is-halfheight">
+    <div class="container is-halfheight">
+      <div class="custom-card">
+        <div class="img-box"><img src="https://i.ibb.co/6wm26Tm/1082cd2f-2c70-46aa-863a-8583f7f35361.webp"></div>
+        <div class="custom-content">
+          <h2>A.I Image Upscaler</h2>
+          <p>I had a lot of photos from the early 2000s my parents had taken on an old camera. One day we were looking through them on the TV & found that theyre really bad quality being low resolution stretched to a 4K TV. So I built an Upscalar for my family to use.</p>
+        </div>
+      </div>
+      <div class="custom-card">
+        <div class="img-box"><img src="https://i.ibb.co/dWkkGh9/5da06e1a-29c6-4c3e-bf90-f4c8a535a03c.png"></div>
+        <div class="custom-content">
+          <h2>A.I Image Classifier</h2>
+          <p>Lets say you have a large library of photos all of one category e.g. Animals but you want to sort them, and be able to identify any additions to it, I built a program that can.</p>
+        </div>
+      </div>
+      <div class="custom-card">
+        <div class="img-box"><img src="https://i.ibb.co/Bwyj6SG/6b27f38d-119f-4cec-ac00-1a9daac23f56.webp"></div>
+        <div class="custom-content">
+          <h2>Pattern Recognition (WIP)</h2>
+          <p>I have 32 sets of 24Bits sampling 256k times a second, 30 seconds of Data. Im trying to figure out the best & most efficient approach to finding patterns within the data. Looking at a mixture of reinforcement learning & LSTM.</p>
+        </div>
+      </div>
+      <div class="custom-card">
+        <div class="img-box"><img src="https://i.ibb.co/y6bBrGD/5da06e1a-29c6-4c3e-bf90-f4c8a535a03c.png"></div>
+        <div class="custom-content">
+          <h2>IoT Communication (WIP)</h2>
+          <p>Linked to pattern recognition, once those patterns are identified which is the best way of communicating information to a particular device leveraging common protocols such as Wi-Fi, Bluetooth, Zigbee, Cellular (4G/5G) & Cloud services.</p>
         </div>
       </div>
     </div>
@@ -186,10 +334,10 @@
           is-5-widescreen is-offset-1-widescreen
           is-5-fullhd is-offset-1-fullhd">
             <h1 class="title titled is-1 mb-6">
-              Web Development Frameworks
+              Web Development Frameworks & DevOps
             </h1>
             <h2 class="subtitle subtitled">  
-            Web development frameworks are essential tools that empower developers to create robust and efficient web applications. They provide a structured approach to building websites by offering pre-built components, libraries, and best practices. I can bring that to you.
+            Web development frameworks are essential tools that empower developers to create robust and efficient web applications. This entire site, with all the projects and databases was built using Python (Including ML Packages), Flask, Django elements, Javascript and is hosted on Google Cloud but am willing to work in <b>AWS</b> & <b>Azure</b>. This is also CI/CD so any changes I made to any of the tools featured are automatically pulled and deployed here.
             </h2>
           </div>
           <div data-aos="fade-down" class="column
