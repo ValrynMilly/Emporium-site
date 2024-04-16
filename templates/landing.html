@@ -275,7 +275,6 @@
             <h3 class="subtitled subtitle">
               Computer vision empowers machines to see, interpret, and understand the visual world, offering endless potential for enhancing security, healthcare, automation, etc... The following program is a Face, Emotions and Hands tracker. Face & Emotions tracker was done using the FER 2013 Database and built with Tensorflow & Keras. I then added Google's MediaPipe for hand tracking.
             </h3>
-
             <form action="/video_feed" method="POST">
                 <button class="button is-info is-large" name="VisionButton" type="submit">Try this</button>
             </form>
@@ -293,17 +292,29 @@
   <section class="hero is-white is-halfheight">
     <div class="container is-halfheight">
       <div class="custom-card">
-        <div class="img-box"><img src="https://i.ibb.co/6wm26Tm/1082cd2f-2c70-46aa-863a-8583f7f35361.webp"></div>
+        <div class="img-box js-modal-trigger" data-target="modal-js-example" ><img src="https://i.ibb.co/6wm26Tm/1082cd2f-2c70-46aa-863a-8583f7f35361.webp"></div>
         <div class="custom-content">
-          <h2>A.I Image Upscaler</h2>
-          <p>I had a lot of photos from the early 2000s my parents had taken on an old camera. One day we were looking through them on the TV & found that theyre really bad quality being low resolution stretched to a 4K TV. So I built an Upscalar for my family to use.</p>
+          <h2 class="js-modal-trigger" data-target="modal-js-example">A.I Image Upscaler</h2>
+          <p class="js-modal-trigger" data-target="modal-js-example">I had a lot of photos from the early 2000s my parents had taken on an old camera. One day we were looking through them on the TV & found that theyre really bad quality being low resolution stretched to a 4K TV. So I built an Upscalar for my family to use.</p>
         </div>
+      </div>
+      <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+      
+        <div class="modal-content">
+          <div class="box">
+            <p>Modal JS example</p>
+            <!-- Your content -->
+          </div>
+        </div>
+      
+        <button class="modal-close is-large" aria-label="close"></button>
       </div>
       <div class="custom-card">
         <div class="img-box"><img src="https://i.ibb.co/dWkkGh9/5da06e1a-29c6-4c3e-bf90-f4c8a535a03c.png"></div>
         <div class="custom-content">
           <h2>A.I Image Classifier</h2>
-          <p>Lets say you have a large library of photos all of one category e.g. Animals but you want to sort them, and be able to identify any additions to it, I built a program that can.</p>
+          <p>Lets say you have a large dataset of photos all of one category e.g. Animals but you want to sort them, and be able to identify any additions to it, I built a program that can.</p>
         </div>
       </div>
       <div class="custom-card">
@@ -371,6 +382,52 @@
       once: true
     });
   </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    if(event.key === "Escape") {
+      closeAllModals();
+    }
+  });
+});
+  </script>
+
 </body>
 
 </html>
