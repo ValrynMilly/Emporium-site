@@ -11,13 +11,13 @@ variables:
   azureServiceConnectionId: '84b3b109-e191-4a72-ac7a-05ef28c66463'
 
   # Web app name
-  webAppName: 'PortfolioSite-AZB'
+  webAppName: 'az-prtflo'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
   # Environment name
-  environmentName: 'PersonalSiteENV'
+  environmentName: 'az-prtflo_group'
 
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
