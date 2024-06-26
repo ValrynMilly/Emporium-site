@@ -11,7 +11,7 @@ variables:
   azureServiceConnectionId: '84b3b109-e191-4a72-ac7a-05ef28c66463'
 
   # Web app name
-  webAppName: 'ekaysite'
+  webAppName: ''
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
