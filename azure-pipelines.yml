@@ -11,19 +11,19 @@ variables:
   azureServiceConnectionId: '84b3b109-e191-4a72-ac7a-05ef28c66463'
 
   # Web app name
-  webAppName: ''
+  webAppName: 'ekaysite'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
   # Environment name
-  environmentName: ''
+  environmentName: 'PersonalSiteENV'
 
   # Project root folder. Point to the folder containing manage.py file.
   projectRoot: $(System.DefaultWorkingDirectory)
 
-  # Python version: 3.7
-  pythonVersion: '3.7'
+  # Python version: 3.11
+  pythonVersion: '3.11'
 
 stages:
 - stage: Build
