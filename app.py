@@ -6,6 +6,7 @@ from flask import Flask
 from flask import render_template, Response, request, redirect, url_for
 app = Flask(__name__)
 
+
 @app.route("/")
 def landing():
     return render_template('landing.html')
@@ -16,5 +17,3 @@ def video_feed():
     if request.method == 'POST':
        htm.main()
        return redirect(url_for('landing'))
-   
-   
