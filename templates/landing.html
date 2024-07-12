@@ -13,6 +13,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     @media(max-width: 500px) {
       .reverse-columns {
         flex-direction: column-reverse;
@@ -152,9 +157,9 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="">
+  <nav class="navbar is-fixed-top"  role="navigation" aria-label="main navigation">
+    <div class="navbar-brand is-10-mobile is-offset-1-mobile">
+      <a class="navbar-item">
         <img src="https://i.postimg.cc/dV0pwVxk/EE.png" width="40" height="28">
       </a>
     </div>
@@ -162,10 +167,10 @@
     <div class="navbar-menu is-family-monospace">
 
       <div class="navbar-end">
-        <a class="navbar-item">
+        <a class="navbar-item" href="#HOME">
           HOME
         </a>
-        <a class="navbar-item">
+        <a class="navbar-item" href="#ABOUTME">
           ABOUT ME
         </a>
         <a class="navbar-item">
@@ -177,10 +182,10 @@
           </a>
   
           <div class="navbar-dropdown">
-            <a class="navbar-item">
+            <a class="navbar-item" href="#AIML">
               AI & ML
             </a>
-            <a class="navbar-item is-selected">
+            <a class="navbar-item is-selected" href="#WEBDEV">
               Web Dev / DevOps
             </a>
             <a class="navbar-item">
@@ -201,7 +206,7 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero is-white is-fullheight has-background">
+  <section class="hero is-white is-fullheight has-background"  id="HOME">
     <style>
     .hero.has-background {
     position: relative;
@@ -257,11 +262,10 @@
   </section>
 
 
-    <div class="container">
+    <div class="container" id="ABOUTME">
       <div class="columns">
         <div class="is-relative column is-5">
-          <img class="is-block mx-auto mt-5 mt-0-desktop is-cover" style="height: 448px;" src="zeus-assets/images/z-picture.png" alt="">
-          <img class="is-absolute is-top-0 is-left-0 mt-10 -ml-10 is-hidden-mobile" src="zeus-assets/icons/dots/blue-dot-left-bars.svg" alt="">
+          <img class="is-block mx-auto mt-5 mt-0-desktop is-cover" style="height: 448px;" src="https://i.ibb.co/CbhqFTx/Selfie.png" alt="">
         </div>
         <div class="column is-7">
 
@@ -310,7 +314,7 @@
           is-4-widescreen is-offset-1-widescreen
           is-4-fullhd is-offset-1-fullhd">
             <figure class="is-fullheight">
-              <img src="https://iili.io/df1focN.png">
+              <img class="is-block mx-auto mt-5 mt-0-desktop is-cover" src="https://i.ibb.co/tQrJXHB/Design-123.png" alt="">
             </figure>
           </div>
           <div data-aos="fade-down" class="column
@@ -318,15 +322,21 @@
           is-10-tablet is-offset-1-tablet
           is-5-desktop is-offset-1-desktop
           is-5-widescreen is-offset-1-widescreen
-          is-5-fullhd is-offset-1-fullhd">
+          is-5-fullhd is-offset-1-fullhd"  id="AIML">
             <h1 class="titled title is-1 mb-6">
               Computer Vision Series - AI, ML
             </h1>
             <h3 class="subtitled subtitle">
-              Computer vision empowers machines to see, interpret, and understand the visual world, offering endless potential for enhancing security, healthcare, automation, etc... The following program is a Face, Emotions and Hands tracker. Face & Emotions tracker was done using the FER 2013 Database and built with Tensorflow & Keras. I then added Google's MediaPipe for hand tracking.
+              Computer vision empowers machines to see, interpret, and understand the visual world, offering endless potential for enhancing security, healthcare, automation, etc... The following program is a Face, Emotions and Hands tracker. The face and emotions was built using the FER 2013 Database and trained with Tensorflow & Keras. I then added Google's MediaPipe for hand tracking.
             </h3>
             <form action="/video_feed" method="POST">
-                <button class="button is-info is-large" name="VisionButton" type="submit">Try this</button>
+                <button class="button is-info is-rounded is-medium" name="VisionButton" type="submit">Try this</button>
+                <a class="button is-medium is-rounded is-youtube" href="" target="_blank">
+                  <span class="icon">
+                    <i class="fab fa-youtube fa-lg"></i>
+                  </span>
+                  <span> Or watch</span>
+                </a>
             </form>
             <br>
             <a>
@@ -386,7 +396,7 @@
 
   <section class="hero is-white is-halfheight">
     <div class="hero-body">
-      <div class="container">
+      <div class="container" id="WEBDEV">
         <div class="columns  is-vcentered reverse-columns">
           <div data-aos="fade-right" class="column
           is-10-mobile is-offset-1-mobile
@@ -398,7 +408,7 @@
               Web Development Frameworks & DevOps
             </h1>
             <h2 class="subtitle subtitled">  
-            Web development frameworks are essential tools that empower developers to create robust and efficient web applications. This entire site, with all the projects and databases was built using Python (Including ML Packages), Flask, Django elements, Javascript and is hosted on Google Cloud but am willing to work in <b>AWS</b> & <b>Azure</b>. This is also CI/CD so any changes I make to any of the tools featured are automatically pulled and deployed here.
+            Web development frameworks are essential tools that empower developers to create robust and efficient web applications. This entire site, with all the projects and databases was built using Python (Including ML Packages), Flask, Django elements, Javascript and is hosted on <b>Google Cloud</b> but am willing to work in <b>AWS</b> & <b>Azure</b>. This is also CI/CD so any changes I make to any of the tools featured are automatically pulled and deployed here.
             </h2>
           </div>
           <div data-aos="fade-down" class="column
@@ -477,6 +487,35 @@
   });
 });
   </script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function(){
+    // Add smooth scrolling to all links
+    $("a").on('click', function(event) {
+
+      // Make sure this.hash has a value before overriding default behavior
+      if (this.hash !== "") {
+        // Prevent default anchor click behavior
+        event.preventDefault();
+
+        // Store hash
+        var hash = this.hash;
+
+        // Using jQuery's animate() method to add smooth page scroll
+        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 101, function(){
+
+          // Add hash (#) to URL when done scrolling (default click behavior)
+          window.location.hash = hash;
+        });
+      } // End if
+    });
+  });
+</script>
 
 </body>
 
