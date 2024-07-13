@@ -331,13 +331,33 @@
             </h3>
             <form action="/video_feed" method="POST">
                 <button class="button is-info is-rounded is-medium" name="VisionButton" type="submit">Try this</button>
-                <a class="button is-medium is-rounded is-youtube" href="" target="_blank">
+                <a class="button js-modal-trigger is-rounded is-youtube is-medium" data-target="Youtubemodal">
                   <span class="icon">
                     <i class="fab fa-youtube fa-lg"></i>
                   </span>
                   <span> Or watch</span>
                 </a>
             </form>
+            <div id="Youtubemodal" class="modal">
+              <div class="modal-background"></div>
+              <div class="modal-content">
+                <div class="box">
+                  <figure class="image is-16by9">
+                    <iframe
+                      class="has-ratio"
+                      width="640"
+                      height="360"
+                      src="https://www.youtube.com/embed/oy5Nbo0pgb0"
+                      frameborder="0"
+                      allowfullscreen
+                    ></iframe>
+                  </figure>
+                </div>
+              </div>
+            
+              <button class="modal-close is-large" aria-label="close"></button>
+            </div>
+            
             <br>
             <a>
               Please allow access to webcam & a small window will open, press Q on keyboard to quit once done.
@@ -352,19 +372,22 @@
   <section class="hero is-white is-halfheight">
     <div class="container is-halfheight">
       <div class="custom-card">
-        <div class="img-box js-modal-trigger" data-target="modal-js-example" ><img src="https://i.ibb.co/6wm26Tm/1082cd2f-2c70-46aa-863a-8583f7f35361.webp"></div>
+        <div class="img-box js-modal-trigger" data-target="aiu-modal" ><img src="https://i.ibb.co/6wm26Tm/1082cd2f-2c70-46aa-863a-8583f7f35361.webp"></div>
         <div class="custom-content">
-          <h2 class="js-modal-trigger" data-target="modal-js-example">A.I Image Upscaler</h2>
-          <p class="js-modal-trigger" data-target="modal-js-example">I had a lot of photos from the early 2000s my parents had taken on an old camera. One day we were looking through them on the TV & found that theyre really bad quality being low resolution stretched to a 4K TV. So I built an Upscalar for my family to use.</p>
+          <h2 class="js-modal-trigger" data-target="aiu-modal">A.I Image Upscaler</h2>
+          <p class="js-modal-trigger" data-target="aiu-modal">I had a lot of photos from the early 2000s my parents had taken on an old camera. One day we were looking through them on the TV & found that theyre really bad quality being low resolution stretched to a 4K TV. So I built an Upscalar for my family to use.</p>
         </div>
       </div>
-      <div id="modal-js-example" class="modal">
+      <div id="aiu-modal" class="modal">
         <div class="modal-background"></div>
       
         <div class="modal-content">
           <div class="box">
-            <p>Modal JS example</p>
-            <!-- Your content -->
+            <form method='POST' enctype="multipart/form-data">
+            {{form.hidden_tag()}}
+            {{form.file()}}
+            {{form.submit()}}
+          </form>
           </div>
         </div>
       
