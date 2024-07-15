@@ -1,15 +1,10 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.11
-
-WORKDIR /code
-
-COPY requirements.txt .
-
-RUN pip3 install -r requirements.txt
-
+FROM python:3.9-slim-buster
+WORKDIR /app
+COPY ./requirements.txt /app
+RUN pip install -r requirements.txt
 COPY . .
-
-EXPOSE 50505
-
-ENTRYPOINT ["gunicorn", "app:app"]
+EXPOSE 5000
+ENV FLASK_APP=my_flask.py
+CMD ["flask", "run", "--host", "0.0.0.0"]

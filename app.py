@@ -12,8 +12,8 @@ import glob
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secretkey' #<------- HIDE THIS IN ENV VARIABLES
-app.config['UPLOAD_FOLDER'] = 'ESRGAN\ESRGAN\LR'
-app.config['DOWNLOAD_FOLDER'] = 'ESRGAN\ESRGAN/results'
+app.config['UPLOAD_FOLDER'] = 'ESRGAN\LR'
+app.config['DOWNLOAD_FOLDER'] = 'ESRGAN/results'
 
 files = glob.glob('ESRGAN/LR/')
 
@@ -32,8 +32,8 @@ def delete_files_in_directory(directory_path):
    except OSError:
      print("Error occurred while deleting files.")
 
-directory_path = 'ESRGAN\ESRGAN\LR'  
-directory_path2 = 'ESRGAN\ESRGAN/results'
+directory_path = 'ESRGAN\LR'  
+directory_path2 = 'ESRGAN/results/'
 cwd = os.getcwd()
 
 
@@ -49,9 +49,8 @@ def landing():
     if form.validate_on_submit():
         file = form.file.data
         file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),app.config['UPLOAD_FOLDER'],secure_filename(file.filename)))
-        os.chdir('ESRGAN\ESRGAN/')
+        os.chdir('ESRGAN/')
         os.system('python test.py')
-        os.chdir('..')
         os.chdir('..')
         download_files_in_directory(directory_path2)
         delete_files_in_directory(directory_path)
