@@ -4,12 +4,6 @@ import mediapipe as mp
 import keyboard
 from keras.models import load_model
 import numpy as np
-from playsound import playsound
-
-def playwow():
-    playsound('Multimedia\wow.wav')
-
-soundtrigger = 0
 
 class HandDetector:
     def __init__(self, mode=False, maxHands=2, detectionCon=0.5, minTrackCon=0.5):
@@ -171,10 +165,3 @@ if __name__ == "__main__":
 
     if keyboard.is_pressed('q'):
         cv2.destroyAllWindows()
-
-
-
-
-
-
-
