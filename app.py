@@ -3,7 +3,7 @@ import time
 import os
 import CVS as htm
 from flask import Flask
-from flask import render_template, Response, request, redirect, url_for, send_from_directory
+from flask import render_template, Response, request, redirect, url_for, send_from_directory, send_file
 from flask_wtf import FlaskForm
 from wtforms import FileField, SubmitField
 from werkzeug.utils import secure_filename
@@ -14,6 +14,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secretkey' #<------- HIDE THIS IN ENV VARIABLES
 app.config['UPLOAD_FOLDER'] = 'ESRGAN\LR'
 app.config['DOWNLOAD_FOLDER'] = 'ESRGAN/results'
+
 
 files = glob.glob('ESRGAN/LR/')
 
@@ -35,15 +36,10 @@ def delete_files_in_directory(directory_path):
 directory_path = 'ESRGAN\LR'  
 directory_path2 = 'ESRGAN/results/'
 cwd = os.getcwd()
+file_td = os.listdir('ESRGAN/results')[0]
 
-
-def download_files_in_directory(directory_path2):
-     files_in = os.listdir(directory_path2)[0]
-     send_from_directory(directory_path2, files_in, as_attachment=True)
-
-
-@app.route("/", methods=['GET', "POST"])
-@app.route("/home", methods=['GET', "POST"])
+@app.route("/", methods=['GET', 'POST'])
+@app.route("/home", methods=['GET', 'POST'])
 def landing():
     form = UploadFileForm()
     if form.validate_on_submit():
@@ -52,11 +48,17 @@ def landing():
         os.chdir('ESRGAN/')
         os.system('python test.py')
         os.chdir('..')
-        download_files_in_directory(directory_path2)
-        delete_files_in_directory(directory_path)
-        delete_files_in_directory(directory_path2)
+        #delete_files_in_directory(directory_path)
+        redirect("/download")
+        #delete_files_in_directory(directory_path2)
     return render_template('landing.html', form=form)
 
+@app.route("/download",methods=["GET","POST"])
+def download():
+    if request.method=="GET":
+        return render_template("landing.html")
+    elif request.method=="POST":
+        return send_from_directory(directory_path2, file_td, as_attachment=True)
 
 @app.route('/video_feed', methods=['POST'])
 def video_feed():
