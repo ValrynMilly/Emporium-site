@@ -391,11 +391,10 @@
             <br>
             <p class="mb-10 is-size-10 has-text-grey-dark">Choose a photo and upload, soon as its done processing it should download to your browser straight away at a higher resolution.</p>
             <br>
-            <form method='POST' enctype="multipart/form-data">
-            {{form.hidden_tag()}}
-            {{form.file()}}
-            {{form.submit()}}
-          </form>
+            <form method=post enctype=multipart/form-data>
+              <input type=file name=file>
+              <input type=submit value=Upload>
+            </form>
           </div>
         </div>
       
