@@ -6,7 +6,7 @@ from flask import Flask, flash
 from flask import render_template, request, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
 
-UPLOAD_FOLDER = 'ESRGAN\LR'
+UPLOAD_FOLDER = 'ESRGAN/LR'
 DOWNLOAD_FOLDER = 'ESRGAN/results'
 
 app = Flask(__name__)
@@ -57,7 +57,7 @@ def landing():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             os.chdir('ESRGAN/')
-            os.system('python test.py')
+            os.system('python3 test.py')
             os.chdir('..')
             newname = Path(filename).stem
             name = newname + "_rlt.png"
