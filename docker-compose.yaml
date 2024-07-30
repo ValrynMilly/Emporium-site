@@ -1,5 +1,7 @@
 services:
   python-app:
+    webapp:
+      image: portfolio
     build:
       context: .
       dockerfile: Dockerfile

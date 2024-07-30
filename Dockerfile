@@ -11,12 +11,12 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     python3-dev \
     python3-venv \
-    libglib2.0-0 \
     libsm6 \
     libxext6 \
     libxrender-dev \
-    v4l-utils \
-    sudo
+    ffmpeg \
+    sudo \
+    kmod
 
 RUN apt-get update; apt install -y libgl1
 
